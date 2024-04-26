@@ -5,17 +5,22 @@ function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (username === "user" && password === "password") {
       setIsLoggedIn(true);
+      // setMessage("Welcome, user!");
+    }    else {
+      setMessage("Invalid username or password");
     }
   };
 
   return (
     <div>
       <h1>Login Page</h1>
+      <p>{message}</p>
       {isLoggedIn ? (
         <p>Welcome, {username}!</p>
       ) : (
