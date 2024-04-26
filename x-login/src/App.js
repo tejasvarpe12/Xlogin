@@ -11,42 +11,54 @@ function App() {
     e.preventDefault();
     if (username === "user" && password === "password") {
       setIsLoggedIn(true);
-      // setMessage("Welcome, user!");
-    }    else {
+      setMessage(""); // Reset message when logged in successfully
+    } else {
       setMessage("Invalid username or password");
     }
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUsername("");
+    setPassword("");
+    setMessage("");
   };
 
   return (
     <div>
       <h1>Login Page</h1>
-      <p>{message}</p>
       {isLoggedIn ? (
-        <p>Welcome, {username}!</p>
+        <>
+          <p>Welcome, {username}!</p>
+          <button onClick={handleLogout}>Logout</button>
+        </>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="username">Username:</label>
-            <input 
-              type="text" 
-              id="username"
-              value={username} 
-              onChange={(e) => setUsername(e.target.value)} 
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="password">Password:</label>
-            <input 
-              type="password" 
-              id="password"
-              value={password} 
-              onChange={(e) => setPassword(e.target.value)} 
-              required
-            />
-          </div>
-          <button type="submit">Submit</button>
-        </form>
+        <>
+          <p>{message}</p>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="username">Username:</label>
+              <input 
+                type="text" 
+                id="username"
+                value={username} 
+                onChange={(e) => setUsername(e.target.value)} 
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="password">Password:</label>
+              <input 
+                type="password" 
+                id="password"
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+                required
+              />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </>
       )}
     </div>
   );
