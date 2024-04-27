@@ -11,18 +11,13 @@ function App() {
     e.preventDefault();
     if (username === "user" && password === "password") {
       setIsLoggedIn(true);
-      setMessage(""); // Reset message when logged in successfully
+      setMessage(""); 
     } else {
       setMessage("Invalid username or password");
     }
   };
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    setUsername("");
-    setPassword("");
-    setMessage("");
-  };
+  
 
   return (
     <div>
@@ -30,7 +25,7 @@ function App() {
       {isLoggedIn ? (
         <>
           <p>Welcome, {username}!</p>
-          <button onClick={handleLogout}>Logout</button>
+          
         </>
       ) : (
         <>
